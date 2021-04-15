@@ -1,0 +1,142 @@
+.listContainer{
+    display: flex;
+    background: rgb(255,255,255);
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-shadow:0px 2px 30px 10px rgb(204, 202, 198); 
+    transition: width 4s;
+
+}
+
+
+.list{
+    width: 300px;
+    background: rgb(255,255,255);
+    overflow: hidden;
+    flex-direction: column;
+    position: relative;
+
+}
+
+.taskBorder{
+    display: flex;
+    
+    border-bottom: 0.1px solid;
+    border-bottom-color:rgba(197, 197, 197, 0.741);
+    margin: 5px 15px 0px 5px;
+    position: relative;
+    animation-name: entry;
+    animation-duration: 0.3s;
+    
+}
+
+@keyframes entry {
+    0%{
+        transform: translateX(50%);
+    }
+    100%{
+        transform: translateX(0%);
+    }
+}
+
+
+.checkbox{
+    display: none;
+    cursor:pointer;
+    position: relative;
+}
+
+
+.label{
+    display: block;
+    justify-content: flex-start;
+    cursor:pointer;
+    color:#1d8791;
+    padding: 5px;
+    position: relative; 
+    width: 230px;
+    /* overflow: hidden;  */
+    margin-left: 35px;  
+
+}
+
+.label:before{
+    content:"";
+    width: 17px;
+    height: 17px;
+    border: 3px solid;
+    border-color:#25b0bc;
+    border-radius: 5px;
+    display:block;
+    position: absolute;
+    left: -12%;
+    bottom: 3px;
+
+}
+
+.label:after{
+    content:" ";
+    width: 0px;
+    height: 2px;
+    background-color: #25b0bc;
+    display:block;
+    position: absolute;
+    bottom: 12px;
+    left:-8px ;
+    transition: width 0.5s; 
+    
+    
+}
+
+
+ input[type = checkbox]:checked + .label:before{
+    content:" \2714 ";
+    font-size: 20px;
+    color:#25b0bc;
+    display: block;
+    padding: 0;
+    position: absolute; 
+ 
+} 
+
+
+
+input[type = checkbox]:checked+.label::after{
+   width:240px;
+   color:#aadfe4
+}
+
+
+input[type = checkbox]:checked+.label{
+
+    color:#aadfe4;
+} 
+
+
+
+
+.p{
+    text-align: center;
+    margin: 3px;
+    padding: 5px;
+}
+
+
+
+.btn{
+    width: 150px;
+    height: 30px;
+    background-color: #25b0bc;
+    margin: 10px;
+    color: white;
+    border-radius: 5px;
+    outline: none;
+    border:none;
+}
+
+.btn:hover{
+    background-color: #1d8791;
+}
+
+

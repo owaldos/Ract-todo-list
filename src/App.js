@@ -1,24 +1,43 @@
-import logo from './logo.svg';
-import './App.css';
+import React,{useState}from 'react'
+import './App.css'
+import  DataCollector from './components/datacollector.jsx'
+import List from './components/list.jsx'
+
+
 
 function App() {
+  const [state, setState] = useState([])
+
+  const handleButtonAdd = (inputValue)=>{
+    setState([...state,inputValue])
+  }
+
+ 
+  const handleCheckbox =(e)=>{
+     
+    let newState = state.map((item)=>{
+      return item.id === e.target.id ?{...item,check:e.target.checked}:item;
+    })
+
+    setState(newState)
+        
+  }
+    
+    
+
+  const deleteTask =()=>{
+    let newState= state.filter((item)=>item.check===false)
+    setState(newState) 
+  }
+
+
+  
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className = 'container'>
+      <DataCollector handleButtonAdd={handleButtonAdd} />
+      <List state={state} deleteTask={deleteTask} handleCheckbox={handleCheckbox}/>
     </div>
+   
   );
 }
 
